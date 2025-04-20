@@ -3,13 +3,14 @@ package com.insider.journey;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-import static com.insider.journey.enums.Urls.USE_INSIDER;
+
+import static com.insider.journey.enums.Urls.USE_INSIDER_API_URL;
 
 public class InsiderHomePageTest extends BaseTest {
 
     @Test
     public void testHomePageIsOpened() {
-        driver.get(USE_INSIDER);
+        driver.get(USE_INSIDER_API_URL);
 
         String expectedUrl = "https://useinsider.com/";
         String actualUrl = driver.getCurrentUrl();
