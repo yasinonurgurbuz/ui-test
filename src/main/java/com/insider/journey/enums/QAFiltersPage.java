@@ -8,5 +8,7 @@ public class QAFiltersPage {
     public static final String DEPARTMENT_DROP_DOWN_X_PATH = "//select[@name='filter-by-department']";
     public static final String POSITION_LIST_X_PATH = "//div[contains(@class,'position-list')]";
     public static final String JOB_CARDS_X_PATH = "//div[contains(@class,'position-list')]//div[contains(@class,'position')]";
+    public static final String VIEW_ROLES_X_PATH = "//*[@id='jobs-list']/div[1]/div/a";
+    public static final String FIRST_JOB_CARD_X_PATH = "//*[@id='jobs-list']/div[1]";
 }
 

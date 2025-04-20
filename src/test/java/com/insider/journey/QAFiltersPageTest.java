@@ -1,7 +1,9 @@
 package com.insider.journey;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -69,6 +71,44 @@ public class QAFiltersPageTest extends BaseTest {
         System.out.println("All job listings are verified successfully!");
     }
 
+    @Test(dependsOnMethods = {"testFilterQAJobsInIstanbul", "verifyFilteredJobDetails"})
+    public void verifyRedirectToLeverPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+        WebElement firstJobCard = wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath(FIRST_JOB_CARD_X_PATH)));
+
+        ((JavascriptExecutor) driver).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});", firstJobCard);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement viewRoleBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(VIEW_ROLES_X_PATH)));
+
+        new Actions(driver).moveToElement(viewRoleBtn).perform();
+
+        viewRoleBtn.click();
+
+        String originalWindow = driver.getWindowHandle();
+        for (String windowHandle : driver.getWindowHandles()) {
+            if (!windowHandle.equals(originalWindow)) {
+                driver.switchTo().window(windowHandle);
+                break;
+            }
+        }
+
+        wait.until(ExpectedConditions.urlContains("jobs.lever.co"));
+        String currentUrl = driver.getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains("jobs.lever.co"),
+                "Redirected URL is not a Lever application form page: " + currentUrl);
+
+        System.out.println("Redirected successfully to: " + currentUrl);
+    }
 
     public void waitForIstanbulOptionToBeClickable(WebElement locationDropdown) {
         await()
