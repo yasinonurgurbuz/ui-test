@@ -1,8 +1,7 @@
 package com.insider.journey;
 
 import org.testng.Assert;
-import org.testng.annotations.*;
-
+import org.testng.annotations.Test;
 
 import static com.insider.journey.enums.Urls.USE_INSIDER_API_URL;
 
