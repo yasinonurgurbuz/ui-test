@@ -1,10 +1,12 @@
 package com.insider.journey;
 
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.insider.journey.enums.Urls.USE_INSIDER_API_URL;
 
+@Listeners(ScreenshotListener.class)
 public class InsiderHomePageTest extends BaseTest {
 
     @Test

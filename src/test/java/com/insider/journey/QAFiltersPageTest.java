@@ -54,7 +54,7 @@ public class QAFiltersPageTest extends BaseTest {
 
     @Test(dependsOnMethods = "testFilterQAJobsInIstanbul")
     public void verifyFilteredJobDetails() {
-        List<WebElement> jobCards = driver.findElements(By.xpath("//div[contains(@class,'position-list-item-wrapper')]"));
+        List<WebElement> jobCards = driver.findElements(By.xpath(JOB_CARD_X_PATH));
         Assert.assertFalse(jobCards.isEmpty(), "No job listings found!");
 
         for (WebElement card : jobCards) {
