@@ -10,6 +10,7 @@
         <classes>
             <class name="com.insider.journey.InsiderHomePageTest"/>
             <class name="com.insider.journey.CareersPageTest"/>
+            <class name="com.insider.journey.QAFiltersPageTest"/>
         </classes>
     </test>
 
@@ -18,6 +19,7 @@
         <classes>
             <class name="com.insider.journey.InsiderHomePageTest"/>
             <class name="com.insider.journey.CareersPageTest"/>
+            <class name="com.insider.journey.QAFiltersPageTest"/>
         </classes>
     </test>
 </suite>
