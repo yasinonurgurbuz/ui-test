@@ -50,6 +50,26 @@ public class QAFiltersPageTest extends BaseTest {
         System.out.println("Found " + jobCards.size() + " QA job(s) in Istanbul.");
     }
 
+    @Test(dependsOnMethods = "testFilterQAJobsInIstanbul")
+    public void verifyFilteredJobDetails() {
+        List<WebElement> jobCards = driver.findElements(By.xpath("//div[contains(@class,'position-list-item-wrapper')]"));
+        Assert.assertFalse(jobCards.isEmpty(), "No job listings found!");
+
+        for (WebElement card : jobCards) {
+            String title = card.findElement(By.cssSelector(".position-title")).getText().trim().toLowerCase();
+            String department = card.findElement(By.cssSelector(".position-department")).getText().trim();
+            String location = card.findElement(By.cssSelector(".position-location")).getText().trim();
+
+            if (department.equals("Quality Assurance") && location.equals("Istanbul, Turkiye")) {
+                Assert.assertTrue(title.contains("quality assurance"),
+                        "Job title does not contain 'Quality Assurance': " + title);
+            }
+        }
+
+        System.out.println("All job listings are verified successfully!");
+    }
+
+
     public void waitForIstanbulOptionToBeClickable(WebElement locationDropdown) {
         await()
                 .atMost(DURATION, TimeUnit.SECONDS)
