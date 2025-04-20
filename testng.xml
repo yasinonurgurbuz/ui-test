@@ -4,6 +4,7 @@
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.insider.journey.InsiderHomePageTest"/>
+            <class name="com.insider.journey.CareersPageTest"/>
         </classes>
     </test>
 
@@ -11,6 +12,7 @@
         <parameter name="browser" value="firefox"/>
         <classes>
             <class name="com.insider.journey.InsiderHomePageTest"/>
+            <class name="com.insider.journey.CareersPageTest"/>
         </classes>
     </test>
 </suite>
